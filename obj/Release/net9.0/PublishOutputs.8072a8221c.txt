@@ -1,6 +1,10 @@
 D:\Publish\MyMultiTaskService\MyMultiTaskService.exe
 D:\Publish\MyMultiTaskService\appsettings.Development.json
 D:\Publish\MyMultiTaskService\appsettings.json
+D:\Publish\MyMultiTaskService\publish\appsettings.Development.json
+D:\Publish\MyMultiTaskService\publish\appsettings.json
+D:\Publish\MyMultiTaskService\publish\MyMultiTaskService.deps.json
+D:\Publish\MyMultiTaskService\publish\MyMultiTaskService.runtimeconfig.json
 D:\Publish\MyMultiTaskService\MyMultiTaskService.dll
 D:\Publish\MyMultiTaskService\MyMultiTaskService.deps.json
 D:\Publish\MyMultiTaskService\MyMultiTaskService.runtimeconfig.json
