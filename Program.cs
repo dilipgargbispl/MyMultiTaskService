@@ -1,12 +1,23 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MyMultiTaskService;
 
-var builder = Host.CreateApplicationBuilder(args);
+IHost host = Host.CreateDefaultBuilder(args)
+    .UseWindowsService() // 👈 enable running as a Windows Service
+    .ConfigureServices(services =>
+    {
+        services.AddHostedService<Worker>();       // Optional core logic
+        services.AddHostedService<EmailWorker>();  // Email sender
+        services.AddHostedService<OtpWorker>();    // OTP sender
+        // Add more services here if needed
+    })
+    .ConfigureLogging(logging =>
+    {
+        logging.ClearProviders();
+        logging.AddConsole();     // For console testing
+        logging.AddEventLog();    // For Windows Event Viewer logs
+    })
+    .Build();
 
-// Register multiple independent workers
-builder.Services.AddHostedService<Worker>();       // Optional monitoring or base logic
-builder.Services.AddHostedService<EmailWorker>();  // Email sender
-builder.Services.AddHostedService<OtpWorker>();    // OTP sender
-// Add more services here...
-
-var host = builder.Build();
-host.Run();
+await host.RunAsync();
